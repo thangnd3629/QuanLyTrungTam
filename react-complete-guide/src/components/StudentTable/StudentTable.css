@@ -1,0 +1,15 @@
+.Test {
+    border: 1px solid black;
+    table-layout: fixed;
+    
+    color: red;
+    margin: 15px;
+   
+  }
+  
+  th,
+  td {
+    border: 1px solid black;
+    width: 100px;
+    overflow: hidden;
+  }
