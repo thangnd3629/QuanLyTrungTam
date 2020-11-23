@@ -17,11 +17,15 @@ const user = (props) => {
         )
     }
     
-    const dataUpdateHandler = (e, field) => {
-        var input_text = e.target.value;
-        var modified_data = { ...edit_info }
-        modified_data[field] = input_text
+    const dataUpdateHandler = (modified_data) => {
+        
         setEditInfo(modified_data)
+    }
+    const setActive = (active) => {
+        var modified_data = {...edit_info}
+        modified_data.active = active
+        setEditInfo(modified_data)
+
     }
     const finishUpdateHandler = () => {
         var mod_data = { ...edit_info }
@@ -39,16 +43,31 @@ const user = (props) => {
     const cancelUpdateHandler = ()=> {
         setEditInfo(null)
     }
-    
+    const deleteHandler = (delID)=> {
+        delID = delID.map(elm => {
+            console.log(elm)
+            return {
+                id:elm.id,
+                active:elm.active
+            }
+        })
+        AxInstance.post('/deletestudent', delID).then(
+            (response) => {
+                setdata(response.data["students"])
+            }
+        )
+        
+        
+    }
 
     return (
         <React.Fragment>
             
             <EditModal show={edit_info === null ? false : true} cancelUpdate={cancelUpdateHandler} finishUpdate={finishUpdateHandler} dataUpdateHandler={dataUpdateHandler}
-                info={edit_info}
+                info={edit_info} onTickChange={setActive}
             ></EditModal>
             <button className='btn btn-danger' onClick={clicked}>Trigger</button>
-            <StudentTable studentdata={data} editHandler={editHandler} ></StudentTable>
+            <StudentTable studentdata={data} editHandler={editHandler}  deleteHandler={deleteHandler} ></StudentTable>
         </React.Fragment>
     );
 }

@@ -17,8 +17,7 @@ cursor = cnxn.cursor()
 def getStudent():
     data = []
     cursor.execute(
-        "SELECT id,name,work_place,address,phone_1,phone_2 from Student")
-    # print(cursor.description[1][0])
+        "SELECT * from Student")
     students = [dict(zip([key[0] for key in cursor.description], row))
                 for row in cursor]
     return json.dumps({"students": students})
@@ -29,12 +28,12 @@ def updateUser():
     data = request.json
     cursor.execute('''
                 UPDATE Student
-                SET work_place = ?,address = ?,name=?,phone_1=?,phone_2=?
+                SET name = ?,school = ?,class=?,address=?,phone=?,active=?
                 WHERE id =?
-                ''', data['work_place'], data['address'], data['name'], data['phone_1'], data['phone_2'], data['id'])
+                ''', data['name'], data['school'], data['class'], data['address'], data['phone'], data['active'],data['id'])
     cnxn.commit()
     cursor.execute(
-        "SELECT id,name,work_place,address,phone_1,phone_2 from Student")
+        "SELECT * from Student")
     students = [dict(zip([key[0] for key in cursor.description], row))
                 for row in cursor]
     return json.dumps({"students": students})
@@ -43,14 +42,27 @@ def updateUser():
 @app.route('/deletestudent', methods=["POST"])
 def deleteStudent():
     data = request.json
+    for x in data:
+        
+        cursor.execute(
+            '''
+                UPDATE Student
+                SET active=?
+                WHERE id =?
+                ''', 0 ,x['id'])
+    cnxn.commit()
     print(data)
-    return "200"
+    cursor.execute(
+        "SELECT * from Student")
+    students = [dict(zip([key[0] for key in cursor.description], row))
+                for row in cursor]
+    return json.dumps({"students": students})
 
 
 @app.route('/students', methods=["POST"])
 def createUser():
     data = request.json
-    cursor.execute("insert into Student(work_place, address,name,phone_1,phone_2) values (?, ?,?,?,?)", data['work_place'],data['address'],data['name'],data['phone_1'],data['phone_2'])
+    cursor.execute("insert into Student(name,school,class,address,phone,active) values (?, ?,?,?,?,?)", data['name'],data['school'],data['class'],data['address'],data['phone'],1)
     cnxn.commit()
     #print(data)
     return "200"

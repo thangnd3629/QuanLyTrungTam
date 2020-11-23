@@ -15,32 +15,39 @@ function EditModal(props) {
                     <form>
                         <div className="form-group">
                             <label>Họ tên</label>
-                            <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Họ và tên"
+                            <input type="text" className="form-control" aria-describedby="emailHelp" 
                                 value={props.info['name']}
                                 onChange={(e) => props.dataUpdateHandler(e, "name")} />
                         </div>
                         <div className="form-group">
-                            <label>Nơi học tập</label>
+                            <label>Trường</label>
                             <input type="text"
-                                onChange={(e) => props.dataUpdateHandler(e, "work_place")}
-                                value={props.info['work_place']} className="form-control" aria-describedby="emailHelp" placeholder="Nơi học tập" />
+                                onChange={(e) => props.dataUpdateHandler(e, "school")}
+                                value={props.info['school']} className="form-control" aria-describedby="emailHelp"  />
                         </div>
+                        <div className="form-group">
+                            <label>Trường</label>
+                            <input type="text"
+                                onChange={(e) => props.dataUpdateHandler(e, "class")}
+                                value={props.info['class']} className="form-control" aria-describedby="emailHelp"/>
+                        </div>
+
                         <div className="form-group">
                             <label>Địa chỉ</label>
                             <input
 
                                 onChange={(e) => props.dataUpdateHandler(e, "address")}
-                                type="text" value={props.info['address']} className="form-control" aria-describedby="emailHelp" placeholder="Địa chỉ" />
+                                type="text" value={props.info['address']} className="form-control" aria-describedby="emailHelp"  />
                         </div>
                         <div className="form-group">
-                            <label>Số điện thoại của Bố</label>
-                            <input onChange={(e) => props.dataUpdateHandler(e, "phone_1")} type="text" value={props.info['phone_1']} className="form-control" aria-describedby="emailHelp" placeholder="Số điện thoại của Bố" />
+                            <label>Số điện thoại</label>
+                            <input onChange={(e) => props.dataUpdateHandler(e, "phone")} type="text" value={props.info['phone']} className="form-control" aria-describedby="emailHelp"  />
                         </div>
                         <div className="form-group">
-                            <label>Số điện thoại của Mẹ</label>
-                            <input onChange={(e) => props.dataUpdateHandler(e, "phone_2")} type="text" value={props.info['phone_2']} className="form-control" aria-describedby="emailHelp" placeholder="Số điện thoại của Mẹ" />
+                            <label>Đang học</label> 
+                            <input checked={props.info.active} onChange={(e) => props.onTickChange(e.target.checked)} type="checkbox" value={props.info['active']} className="form-control" aria-describedby="emailHelp" placeholder="Số điện thoại của Mẹ" />
                         </div>
-
+                        
                     </form>
 
                 </Modal.Body>
