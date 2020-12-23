@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import AxInstance from '../../axios'
 import StudentTable from '../../components/StudentTable/StudentTable'
 import EditModal from '../../components/EditModal/EditModal'
@@ -8,14 +8,20 @@ const user = (props) => {
     
     const [edit_info, setEditInfo] = useState(null)
     
-    const clicked = () => {
+    const fetch_data = () => {
         AxInstance.get('/students').then(
+            
             (response) => {
+                
                 setdata(response.data["students"])
 
             }
         )
     }
+    useEffect(() => {
+        fetch_data();
+      }, []);
+
     
     const dataUpdateHandler = (modified_data) => {
         
@@ -66,8 +72,7 @@ const user = (props) => {
             <EditModal show={edit_info === null ? false : true} cancelUpdate={cancelUpdateHandler} finishUpdate={finishUpdateHandler} dataUpdateHandler={dataUpdateHandler}
                 info={edit_info} onTickChange={setActive}
             ></EditModal>
-            <button className='btn btn-danger' onClick={clicked}>Trigger</button>
-            <StudentTable studentdata={data} editHandler={editHandler}  deleteHandler={deleteHandler} ></StudentTable>
+            <StudentTable display="student" studentdata={data} editHandler={editHandler}  deleteHandler={deleteHandler} ></StudentTable>
         </React.Fragment>
     );
 }

@@ -1,0 +1,20 @@
+.card{
+    width: 20 rem;
+    
+}
+.card:hover{
+    box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253) !important;
+}
+.card-body{
+    padding: 3rem 0 !;
+}
+.bigger_img{
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+.bigger_img:hover{
+    transform: scale(1.8);
+}
+.overflow{
+    overflow: hidden;
+}

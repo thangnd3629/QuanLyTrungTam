@@ -1,17 +1,21 @@
 import React, { useState } from "react"
-import img1 from '../../asset/eclass.png'
-
+import { Route, Switch ,Link} from 'react-router-dom';
+import classes from './Class.css'
 const Class = props => {
+    
     return (
         <div >
-            <div className='card text-center'>
-                <div className='overflow'>
-                    <img src={img1} className="card-img-top"/>
+            <div className={['card text-center', classes.card].join(" ")}>
+                <div className={classes.overflow}>
+                    <img src={props.img} className={["card-img-top",classes.bigger_img].join(" ")}/>
                 </div>
-                <div class="card">
-                    <div class="card-body text dark">
-                        <p>Hello</p>
-                        <a href="#" className="btn btn-outline-success">Test</a>
+                <div className="card">
+                    <div className="card-body text dark">
+                    <h5 className="card-title">{props.class_name}</h5>
+                        <Link to={'/classes/'+props.class_id}>
+                            <p>Hello</p>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>

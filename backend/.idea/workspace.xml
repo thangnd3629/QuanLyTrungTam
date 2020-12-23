@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2f36a6a-3792-4dd0-8270-642a02ac0e26" name="Default Changelist" comment="" />
+    <list default="true" id="b2f36a6a-3792-4dd0-8270-642a02ac0e26" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-complete-guide/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../react-complete-guide/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-complete-guide/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-complete-guide/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-complete-guide/src/containers/Classes/Class.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-complete-guide/src/containers/Classes/Class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-complete-guide/src/containers/Classes/Classes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-complete-guide/src/containers/Classes/Classes.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1jzTI47hHO41649yxaNCGLXeEns" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -15,6 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/NhapMonTriTueNhanTao" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
   </component>
   <component name="SvnConfiguration">
@@ -29,5 +40,11 @@
       <updated>1604805836619</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1606894814711">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606894814711" />
   </component>
 </project>

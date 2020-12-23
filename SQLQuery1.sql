@@ -30,6 +30,7 @@ create table student_class (
 	primary key (student_id, class_id),
 	foreign key(student_id) references Student(id),
 	foreign key(class_id) references Class(id),
+	
 )
 create table Weekday(
 	id int not null ,
