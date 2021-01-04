@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Class from './Class'
 import img1 from '../../asset/eclass.png'
 import AxInstance from '../../axios'
-import { Route, Switch ,Link} from 'react-router-dom';
+
 class Classes extends Component {
     state = {
         classes_info:null
@@ -15,16 +15,17 @@ class Classes extends Component {
             (response) => {
                 
                 this.setState({classes_info:response.data['classes']})
-
-
             }
         )
     }
 
     
     render() {
+        var clasCard = []
+        var idx = 0
         if(this.state.classes_info!==null){
-            var clasCard = this.state.classes_info.map((elm) => {
+            clasCard = this.state.classes_info.map((elm) => {
+                idx ++
                 
                 return(
                     <div className="col-md-4" key={elm.id}>
@@ -33,6 +34,7 @@ class Classes extends Component {
                 );
             })
         }
+        clasCard.push(<div className="col-md-4" key={idx}><Class img={img1} newClass></Class></div>)
         return (
             <div className="container-fluid d-flex fustify-content-center">
                 <div className="row">

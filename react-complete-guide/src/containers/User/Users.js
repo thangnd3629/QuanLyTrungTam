@@ -4,25 +4,29 @@ import StudentTable from '../../components/StudentTable/StudentTable'
 import EditModal from '../../components/EditModal/EditModal'
 
 const user = (props) => {
+    // State
     const [data, setdata] = useState(null)
-    
     const [edit_info, setEditInfo] = useState(null)
     
+
+    //fetch data from server
     const fetch_data = () => {
         AxInstance.get('/students').then(
             
             (response) => {
                 
                 setdata(response.data["students"])
+                
 
             }
         )
     }
+
     useEffect(() => {
         fetch_data();
       }, []);
-
     
+    // controller
     const dataUpdateHandler = (modified_data) => {
         
         setEditInfo(modified_data)
@@ -31,16 +35,6 @@ const user = (props) => {
         var modified_data = {...edit_info}
         modified_data.active = active
         setEditInfo(modified_data)
-
-    }
-    const finishUpdateHandler = () => {
-        var mod_data = { ...edit_info }
-        setEditInfo(null)
-        AxInstance.post('/updatestudent', mod_data).then(
-            (response) => {
-                setdata(response.data["students"])
-            }
-        )
     }
     const editHandler = (info) => {
         
@@ -48,6 +42,15 @@ const user = (props) => {
     }
     const cancelUpdateHandler = ()=> {
         setEditInfo(null)
+    }
+    const finishUpdateHandler = () => {
+        var mod_data = { ...edit_info }
+        setEditInfo(null)
+        AxInstance.put('/students', mod_data).then(
+            (response) => {
+                fetch_data()
+            }
+        )
     }
     const deleteHandler = (delID)=> {
         delID = delID.map(elm => {
@@ -57,13 +60,12 @@ const user = (props) => {
                 active:elm.active
             }
         })
-        AxInstance.post('/deletestudent', delID).then(
+        
+        AxInstance.delete('/students', {data:{"delID":delID}}).then(
             (response) => {
-                setdata(response.data["students"])
+                fetch_data()
             }
         )
-        
-        
     }
 
     return (

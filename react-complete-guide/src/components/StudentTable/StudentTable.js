@@ -3,9 +3,10 @@ import MUIDataTable from "mui-datatables";
 
 const StudentTable = (props) => {
     if (!props.studentdata) return null
-
+    
     var col = ["ID", "Họ tên", "Trường", "Lớp", "Địa chỉ", "Số điện thoại", "Học"]
     var received_data = [...props.studentdata]
+    
     var row = received_data.map(elm => {
         var x = Object.values(elm)
         var activeStattus = col.findIndex(elm => {
@@ -17,7 +18,6 @@ const StudentTable = (props) => {
         else {
             x[activeStattus] = "Nghỉ học"
         }
-
         return x
     })
     var options = null;
@@ -48,12 +48,10 @@ const StudentTable = (props) => {
     }
     else if(props.display === 'class')
     {
+        col = ["ID", "Họ tên", "Trường", "Lớp", "Địa chỉ", "Số điện thoại"]
         options = {
-            onRowClick: (e) => {
-
-                console.log(e)
-
-            },
+            selectableRows:"single",
+            selectableRowsHideCheckboxes:true,
             onRowsDelete: (data) => {
                 var deleteIdx = Object.keys(data['lookup'])
                 const deleteID = deleteIdx.map(elm => {
@@ -81,11 +79,31 @@ const StudentTable = (props) => {
             }
         };
     }
+    else if(props.display === 'payment')
+    {
+        col = ["ID", "Họ tên", "Trường", "Lớp", "Tổng" , "Đã đóng", "Còn thiếu"]
+        row = received_data.map(elm => {
+            return Object.values(elm)
+        })
+        options = {
+            
+            onRowClick: (info) => {
+
+                props.onClick(info)
+
+            },
+            
+            selectableRows:"single",
+            selectableRowsHideCheckboxes:true,
+            
+        };
+        
+    }   
     return (
         <React.Fragment>
 
             <MUIDataTable
-                title={"Students"}
+                
                 data={row}
                 columns={col}
                 options={options}

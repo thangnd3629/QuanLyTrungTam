@@ -45,7 +45,7 @@ function EditModal(props) {
                         </div>
                         <div className="form-group">
                             <label>Đang học</label> 
-                            <input checked={props.info.active} onChange={(e) => props.onTickChange(e.target.checked)} type="checkbox" value={props.info['active']} className="form-control" aria-describedby="emailHelp" placeholder="Số điện thoại của Mẹ" />
+                            <input disabled={props.info.active} checked={props.info.active} onChange={(e) => props.onTickChange(e.target.checked)} type="checkbox" value={props.info['active']} className="form-control" aria-describedby="emailHelp" placeholder="Số điện thoại của Mẹ" />
                         </div>
                         
                     </form>
