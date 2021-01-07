@@ -7,7 +7,6 @@ const user = (props) => {
     // State
     const [data, setdata] = useState(null)
     const [edit_info, setEditInfo] = useState(null)
-    
 
     //fetch data from server
     const fetch_data = () => {
@@ -27,7 +26,9 @@ const user = (props) => {
       }, []);
     
     // controller
-    const dataUpdateHandler = (modified_data) => {
+    const dataUpdateHandler = (e,modified_field) => {
+        var modified_data = {...edit_info}
+        modified_data[modified_field] = e.target.value
         
         setEditInfo(modified_data)
     }
@@ -44,10 +45,10 @@ const user = (props) => {
         setEditInfo(null)
     }
     const finishUpdateHandler = () => {
-        var mod_data = { ...edit_info }
-        setEditInfo(null)
-        AxInstance.put('/students', mod_data).then(
+       
+        AxInstance.put('/students', edit_info).then(
             (response) => {
+                setEditInfo(null)
                 fetch_data()
             }
         )
